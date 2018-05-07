@@ -1,7 +1,8 @@
+import { hideLoading, showLoading } from 'react-redux-loading';
 import { getInitialData } from '../utils/api';
-import { receiveNotes } from './notes';
 import { receiveNotebooks } from './notebooks';
-import { showLoading, hideLoading } from 'react-redux-loading';
+import { receiveNotes } from './notes';
+
 
 export const handleInitialData = ()=> {
     return (dispatch) => {
@@ -12,6 +13,5 @@ export const handleInitialData = ()=> {
                 dispatch(receiveNotes(notes));
                 dispatch(hideLoading());
             })
-            
     }
-}
+} 

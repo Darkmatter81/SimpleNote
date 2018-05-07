@@ -27,10 +27,10 @@ const getNotebooks = () => {
             notes: ['3456', '7890', '0123']
         },
         {
-            id: '1234',
-            createdDate: '2017-09-23T19:50:54.427Z',
-            name: 'My notebook',
-            notes: ['3456', '7890', '0123']
+            id: '6744',
+            createdDate: '2018-11-4T09:10:54.427Z',
+            name: 'Blog Ideas',
+            notes: ['4564', '2390', '3353']
         }
     ];
 }

@@ -17,9 +17,7 @@ class App extends Component {
     return (
       <div>
         <LoadingBar />
-        Simple Note App!
-
-        
+        Simple Notes App
       </div>
     );
   }

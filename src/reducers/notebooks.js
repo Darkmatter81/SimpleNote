@@ -1,4 +1,4 @@
-import {RECEIVE_NOTEBOOKS} from '../actions/notebooks';
+import { RECEIVE_NOTEBOOKS } from '../actions/notebooks';
 
 export default function (state={}, action){
     switch (action.type){
