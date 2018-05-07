@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import LoadingBar from 'react-redux-loading';
+import { connect } from 'react-redux';
 import './App.css';
+import { handleInitialData } from './actions/shared';
 
 class App extends Component {
+  state = {
+
+  };
+
+  componentDidMount(){
+      this.props.dispatch(handleInitialData());
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <LoadingBar />
+        Simple Note App!
+
+        
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) =>{
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps)(App);
