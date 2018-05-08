@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import LoadingBar from 'react-redux-loading';
 import { connect } from 'react-redux';
-import './App.css';
-import { handleInitialData } from './actions/shared';
+import '../App.css';
+import { handleInitialData } from '../actions/shared';
+import NotebooksList from './NotebooksList';
 
 class App extends Component {
   state = {
@@ -17,16 +18,11 @@ class App extends Component {
     return (
       <div>
         <LoadingBar />
-        Simple Notes App
+        <NotebooksList />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) =>{
-  return {
-    
-  }
-}
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);

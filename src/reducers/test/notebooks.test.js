@@ -6,8 +6,14 @@ describe ('Notebook reducer', ()=>{
         expect(reducer(undefined, {})).toEqual({})
     });
 
-    it('State should have a list of notebooks', ()=>{
-        const expected = {notebooks: getNotebooks()};
+    it('Should return the initial state', ()=>{
+        const initialState = getNotebooks();
+        expect(reducer(initialState, {type: 'foobar'})).toEqual(initialState);
+    })
+
+    it('State receive a list of notebooks', ()=>{
+        const expected = getNotebooks();
+        
         expect(
             reducer({}, { 
                 type: actions.RECEIVE_NOTEBOOKS,
@@ -16,21 +22,47 @@ describe ('Notebook reducer', ()=>{
         )
         .toEqual(expected);
     });
+
+    it ('Should add a new notebook to state', ()=>{
+        const initialState = getNotebooks();
+        const notebook = getNotebook();
+
+        const result = reducer(initialState,
+            {
+                type: actions.ADD_NOTEBOOK,
+                notebook,
+            }
+        );
+
+        expect(result).toHaveProperty(notebook.id);
+        expect(result).toMatchObject({'1000': notebook});  
+    })
 });
 
+const getNotebook = ()=>{
+    return {
+        id: '1000',
+        createdDate:'149824673833',
+        name: 'Notebook',
+        notes:[], 
+    }
+}
+
 const getNotebooks = () => {
-    return [
+    return {
+        '1234':
         {
             id: '1234',
-            createdDate: '2017-09-23T19:50:54.427Z',
+            createdDate: '149824673833',
             name: 'My notebook',
             notes: ['3456', '7890', '0123']
         },
+        '6744':
         {
-            id: '6744',
-            createdDate: '2018-11-4T09:10:54.427Z',
+            id: '5678',
+            createdDate: '149824673833',
             name: 'Blog Ideas',
             notes: ['4564', '2390', '3353']
         }
-    ];
+    };
 }

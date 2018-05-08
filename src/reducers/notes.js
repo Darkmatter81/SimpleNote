@@ -5,7 +5,7 @@ export default function (state={}, action){
         case RECEIVE_NOTES:
             return {
                 ...state,
-                notes: action.notes
+                ...action.notes,
             };
         default:
             return state;
