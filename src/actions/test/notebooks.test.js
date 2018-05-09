@@ -19,6 +19,15 @@ describe ('Notebook actions', ()=>{
         
         expect(notebookActions.addNotebook(getNotebook())).toEqual(expected);
     });
+
+    it('Should create an action to remove notebook by id', ()=>{
+        const expected = {
+            type: notebookActions.REMOVE_NOTEBOOK,
+            id: '1000'
+        };
+
+        expect(notebookActions.removeNotebook('1000')).toEqual(expected);
+    });
 });
 
 const getNotebook = ()=>{

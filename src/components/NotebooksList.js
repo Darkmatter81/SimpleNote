@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleAddNotebook } from '../actions/shared';
+import { handleAddNotebook, handleRemoveNotebook } from '../actions/notebooks';
+import Notebook from './Notebook';
 
 class NotebooksList extends Component {
     state = { newNoteBook: '' };
@@ -8,11 +9,16 @@ class NotebooksList extends Component {
     onAddNotebookSubmit = (e) =>{
         e.preventDefault();
         this.props.dispatch(handleAddNotebook(this.state.newNoteBook));
+        this.setState({newNoteBook: ''});
     }
 
     onInputChange = (e)=> {
         const value = e.target.value;
         this.setState({newNoteBook : value });
+    }
+
+    onDeleteNoteBook = (id) => {
+        this.props.dispatch(handleRemoveNotebook(id));
     }
 
     render() {
@@ -23,7 +29,12 @@ class NotebooksList extends Component {
                 <h2>Notebooks</h2>
                 <ul>
                     {Object.keys(notebooks).map((book)=>(
-                          <li key={book}>{notebooks[book].name}</li>
+                          <li key={book}>
+                              <Notebook 
+                                notebook={notebooks[book]}
+                                onDelete={()=>this.onDeleteNoteBook(notebooks[book].id)}
+                                />
+                          </li>
                         )
                     )}
                 </ul>

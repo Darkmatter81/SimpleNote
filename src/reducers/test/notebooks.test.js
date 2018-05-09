@@ -10,8 +10,8 @@ describe ('Notebook reducer', ()=>{
         const initialState = getNotebooks();
         expect(reducer(initialState, {type: 'foobar'})).toEqual(initialState);
     })
-
-    it('State receive a list of notebooks', ()=>{
+ 
+    it('State receives a list of notebooks', ()=>{
         const expected = getNotebooks();
         
         expect(
@@ -36,9 +36,30 @@ describe ('Notebook reducer', ()=>{
 
         expect(result).toHaveProperty(notebook.id);
         expect(result).toMatchObject({'1000': notebook});  
-    })
-});
+    });
 
+    it('Should remove a note notebook from the state', ()=>{
+        const initialState = getNotebooks();
+        const notebookToRemove = 
+            {'1234':
+                {
+                    id: '1234',
+                    createdDate: '149824673833',
+                    name: 'My notebook',
+                    notes: ['3456', '7890', '0123']
+                }
+            }
+        
+        expect(
+            reducer(initialState, {
+                type:actions.REMOVE_NOTEBOOK,
+                id: '1234'
+            })
+        )
+        .not.toMatchObject(notebookToRemove);
+    });
+});
+ 
 const getNotebook = ()=>{
     return {
         id: '1000',

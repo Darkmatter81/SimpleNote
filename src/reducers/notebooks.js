@@ -1,4 +1,7 @@
-import { RECEIVE_NOTEBOOKS, ADD_NOTEBOOK } from '../actions/notebooks';
+import { 
+    RECEIVE_NOTEBOOKS, 
+    ADD_NOTEBOOK,
+    REMOVE_NOTEBOOK } from '../actions/notebooks';
 
 export default function (state={}, action){
     switch (action.type){
@@ -13,6 +16,10 @@ export default function (state={}, action){
                 ...state,
                 [id]:action.notebook,
             }
+        case REMOVE_NOTEBOOK:
+            const newState = {...state};
+            delete newState[action.id];
+            return newState;
         default:
             return state;
     }
