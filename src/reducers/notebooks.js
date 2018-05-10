@@ -21,11 +21,13 @@ export default function (state=null, action){
         case REMOVE_NOTEBOOK: {
             const newState = {...state};
             delete newState[action.id];
+
             return newState;
         }
         case REMOVE_NOTE: {
             // remove specific note id from notebook
-            const newState = {...state};
+            const newState = JSON.parse(JSON.stringify(state)); 
+        
             Object.keys(newState).forEach((key)=>{
                 if (newState[key].notes.includes(action.id)){
                     newState[key].notes = 
@@ -34,7 +36,7 @@ export default function (state=null, action){
                         );
                 }
             });
-            
+         
             return newState;
         }       
         default:

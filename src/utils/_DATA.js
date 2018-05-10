@@ -1,4 +1,4 @@
-import { generateID } from './helper';
+import { generateID, getLatency } from './helper';
 
 const notebooks = {
     '64a0dfa3-f733-4181-b076-e151ac5444e1':
@@ -83,13 +83,13 @@ const notes = {
 
 export function _getNotebooks(){
     return new Promise((resolve, reject)=>{
-        setTimeout(()=> resolve(notebooks), 1000);
+        setTimeout(()=> resolve(notebooks), getLatency());
     })
 }
 
 export function _getNotes(){
     return new Promise((resolve, reject) => {
-        setTimeout(()=> resolve(notes), 1000);
+        setTimeout(()=> resolve(notes), getLatency());
     })
 }
 
@@ -102,12 +102,18 @@ export function _addNotebook(name){
     }   
     
     return new Promise((resolve, reject)=>{
-        setTimeout(()=>resolve(notebook), 1000);
+        setTimeout(()=>resolve(notebook), getLatency());
     })
 }
 
 export function _removeNotebook(id){
     return new Promise((resolve, reject)=>{
-        setTimeout(()=>resolve(), 1000);
+        setTimeout(()=>resolve(), getLatency());
+    })
+}
+
+export function _removeNote(id){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>resolve(), getLatency());
     })
 }

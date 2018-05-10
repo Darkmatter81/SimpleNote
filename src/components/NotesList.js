@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Note from './Note';
+import { handleRemoveNote } from '../actions/notes';
 
 class NotesList extends Component {
     state = {  };
 
     onRemoveNoteClick = (id) =>{
-        console.log('removing note:', id);
+        this.props.dispatch( handleRemoveNote(id) );
     }
 
     render() {
