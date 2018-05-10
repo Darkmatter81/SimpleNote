@@ -1,9 +1,10 @@
 import * as actions from '../../actions/notebooks';
+import { REMOVE_NOTE } from '../../actions/notes';
 import reducer from '../notebooks'; 
 
 describe ('Notebook reducer', ()=>{
     it('Should return default empty state', ()=>{
-        expect(reducer(undefined, {})).toEqual({})
+        expect(reducer(null, {})).toEqual(null);
     });
 
     it('Should return the initial state', ()=>{
@@ -58,6 +59,16 @@ describe ('Notebook reducer', ()=>{
         )
         .not.toMatchObject(notebookToRemove);
     });
+
+    it('Should remove a note that is associated with a notebook', ()=>{
+        const result = reducer(getNotebooks(), {
+            type: REMOVE_NOTE,
+            id: '3456',
+        });
+        
+        expect(result['1234'].notes)
+            .not.toContain('3456');
+    });
 });
  
 const getNotebook = ()=>{
@@ -76,7 +87,7 @@ const getNotebooks = () => {
             id: '1234',
             createdDate: '149824673833',
             name: 'My notebook',
-            notes: ['3456', '7890', '0123']
+            notes: ['3456', '7890', '0123', '3332', '3566']
         },
         '6744':
         {

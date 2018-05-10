@@ -1,10 +1,12 @@
 import * as notesAction from '../../actions/notes';
 import { REMOVE_NOTEBOOK } from '../../actions/notebooks';
+import { REMOVE_NOTE } from '../../actions/notes';
+
 import reducer from '../notes';
 
 describe('Notes reducer', ()=>{
     it('Should return default empty state', ()=>{
-        expect(reducer({},{})).toEqual({});
+        expect(reducer(null,{})).toEqual(null);
     });
 
     it('Should return initial state', ()=>{
@@ -45,7 +47,28 @@ describe('Notes reducer', ()=>{
         .toEqual(expected);
     });
 
+    it('Should remove a note from the store', ()=>{
+        expect(reducer(getNotes(), {
+            type: REMOVE_NOTE,
+            id: '123'
+        }))
+        .not.toMatchObject(getNote());
+    });
 });
+
+const getNote = () =>{
+    return {
+        '123':
+        {
+            id: '123',
+            dateCreated: '149824673833',
+            lastUpdated: '149824673833',
+            notebookId: '1000',
+            title: 'Trip to Rome',
+            body:'The best trip in the world',
+        }
+    }
+}
 
 const getNotes = () =>{
     return {

@@ -29,12 +29,12 @@ class NotebooksList extends Component {
                 <h2>Notebooks</h2>
                 <ul>
                     {Object.keys(notebooks).map((book)=>(
-                          <li key={book}>
-                              <Notebook 
-                                notebook={notebooks[book]}
-                                onDelete={()=>this.onDeleteNoteBook(notebooks[book].id)}
-                                />
-                          </li>
+                        <li key={book}>
+                            <Notebook 
+                            notebook={notebooks[book]}
+                            onDelete={()=>this.onDeleteNoteBook(notebooks[book].id)}
+                            />
+                        </li>
                         )
                     )}
                 </ul>

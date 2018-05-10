@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Notebook extends Component {
     state = {  }
@@ -7,7 +8,9 @@ class Notebook extends Component {
 
         return (
             <div>
-                {notebook.name}
+                <Link to={`/notes/${notebook.id}`}>
+                    {notebook.name}
+                </Link>
                 <button onClick={()=> this.props.onDelete(notebook.id)}>
                     X
                 </button>
