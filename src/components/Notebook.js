@@ -8,7 +8,7 @@ class Notebook extends Component {
 
         return (
             <div>
-                <Link to={`/notes/${notebook.id}`}>
+                <Link to={`/notebook/${notebook.id}`}>
                     {notebook.name}
                 </Link>
                 <button onClick={()=> this.props.onDelete(notebook.id)}>

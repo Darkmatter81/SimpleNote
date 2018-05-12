@@ -10,17 +10,17 @@ describe('Notes reducer', ()=>{
     });
 
     it('Should return initial state', ()=>{
-        const initialState = getNotes();
+        const initialState = getNotesList();
         expect(reducer(initialState, {})).toEqual(initialState);
     });
 
     it('Should return state with list of notes', ()=>{
-        const expected = getNotes();
+        const expected = getNotesList();
         
         expect(
             reducer({}, {
                 type: notesAction.RECEIVE_NOTES,
-                notes: getNotes()
+                notes: getNotesList()
             })
         )
         .toEqual(expected);
@@ -39,7 +39,7 @@ describe('Notes reducer', ()=>{
         };
 
         expect (
-            reducer(getNotes(), {
+            reducer(getNotesList(), {
                 type: REMOVE_NOTEBOOK,
                 id: '1000'
             }) 
@@ -48,29 +48,43 @@ describe('Notes reducer', ()=>{
     });
 
     it('Should remove a note from the store', ()=>{
-        expect(reducer(getNotes(), {
+        expect(reducer(getNotesList(), {
             type: REMOVE_NOTE,
             id: '123'
         }))
         .not.toMatchObject(getNote());
     });
+
+    it('Should update a given note in the store', ()=>{
+        const note = getNote();
+        note.title = "New title";
+        note.body = "New note body";
+        note.lastUpdated =  Date.now();
+ 
+        const initialState = getNotesList();
+
+        const result = reducer(initialState, {
+            type: notesAction.UPDATE_NOTE,
+            note,
+        });
+ 
+        expect(result['123']).not.toEqual(initialState['123']);
+        expect(result['123']).toMatchObject(note);
+    })
 });
 
 const getNote = () =>{
     return {
-        '123':
-        {
             id: '123',
             dateCreated: '149824673833',
             lastUpdated: '149824673833',
             notebookId: '1000',
             title: 'Trip to Rome',
             body:'The best trip in the world',
-        }
     }
 }
 
-const getNotes = () =>{
+const getNotesList = () =>{
     return {
        '123':
         {

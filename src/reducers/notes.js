@@ -1,6 +1,7 @@
 import { 
     RECEIVE_NOTES,
-    REMOVE_NOTE
+    REMOVE_NOTE,
+    UPDATE_NOTE,
  } from '../actions/notes';
 
 import { REMOVE_NOTEBOOK } from '../actions/notebooks'; 
@@ -31,6 +32,14 @@ export default function (state = null, action){
             });
             return newState;
         }
+        case UPDATE_NOTE:
+            return {
+                ...state,
+                [action.note.id]: {
+                    ...action.note
+                }
+            }
+    
         default:
             return state;
     }

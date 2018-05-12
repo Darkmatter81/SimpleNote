@@ -2,7 +2,8 @@ import { _getNotebooks,
          _getNotes, 
          _addNotebook,
         _removeNotebook, 
-        _removeNote} from './_DATA';
+        _removeNote,
+        _updateNote, } from './_DATA';
 
 export function getInitialData(){
     return Promise.all([
@@ -21,4 +22,8 @@ export function deleteNotebook(id){
 
 export function deleteNote(id){
     return _removeNote(id);
+}
+
+export function udpateNote(note){
+    return _updateNote(note);
 }

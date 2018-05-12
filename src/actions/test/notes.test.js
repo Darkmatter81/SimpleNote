@@ -21,8 +21,31 @@ describe('Notes actions', ()=>{
             .toEqual(expected);
     })
 
+    it ('Should create an update note action', ()=>{
+        const expected = {
+            type: notesActions.UPDATE_NOTE,
+            note: getNote()
+        }
+
+        expect(notesActions.updateNote(getNote()))
+            .toEqual(expected);
+    });
+
 });
 
+const getNote = () => {
+    return {
+        '123':
+        {
+            id: '123',
+            dateCreated: '149824673833',
+            lastUpdated: '149824673833',
+            notebookId: '1000',
+            title: 'Trip to Rome',
+            body:'The best trip in the world',
+        }
+    };
+}
 
 const getNotes = () =>{
     return {
