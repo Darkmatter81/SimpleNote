@@ -1,6 +1,5 @@
 import * as notesAction from '../../actions/notes';
 import { REMOVE_NOTEBOOK } from '../../actions/notebooks';
-import { REMOVE_NOTE } from '../../actions/notes';
 
 import reducer from '../notes';
 
@@ -49,7 +48,7 @@ describe('Notes reducer', ()=>{
 
     it('Should remove a note from the store', ()=>{
         expect(reducer(getNotesList(), {
-            type: REMOVE_NOTE,
+            type: notesAction.REMOVE_NOTE,
             id: '123'
         }))
         .not.toMatchObject(getNote());
@@ -70,7 +69,30 @@ describe('Notes reducer', ()=>{
  
         expect(result['123']).not.toEqual(initialState['123']);
         expect(result['123']).toMatchObject(note);
-    })
+    });
+
+    it('Should add a new note to the state',()=>{
+        const note = {
+            id: '1000',
+            dateCreated: '149824673833',
+            lastUpdated: '149824673833',
+            notebookId: '2000',
+            title: 'My new note',
+            body:'This is a new note',
+        }
+
+        
+        const initialState = getNotesList();
+
+        const result = reducer(initialState, {
+            type: notesAction.ADD_NOTE,
+            note,
+        });
+
+        expect(result).toHaveProperty('1000');
+        expect(result).toMatchObject({'1000': note});
+
+    });
 });
 
 const getNote = () =>{

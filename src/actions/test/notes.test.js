@@ -31,6 +31,17 @@ describe('Notes actions', ()=>{
             .toEqual(expected);
     });
 
+    it('Should create an add note action', ()=>{
+        const expected = {
+            type: notesActions.ADD_NOTE,
+            note: getNote()
+        }
+
+        expect(notesActions.addNote(getNote()))
+            .toEqual(expected); 
+
+
+    });
 });
 
 const getNote = () => {

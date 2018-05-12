@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { handleUpdateNote } from '../actions/notes';
 
-class NoteDetail extends Component {
+class EditNote extends Component {
     state = {  }
 
     onNoteUpdate = (e) =>{
@@ -76,4 +76,4 @@ const mapStateToProps = ({notes}, {match}) =>{
     };
 }
 
-export default connect(mapStateToProps)(NoteDetail);
+export default connect(mapStateToProps)(EditNote);

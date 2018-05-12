@@ -6,7 +6,8 @@ import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import NotebooksList from './NotebooksList';
 import NotesList from './NotesList';
-import NoteDetail from './NoteDetail';
+import EditNote from './EditNote';
+import AddNote from './AddNote';
 
 import '../App.css';
 
@@ -30,7 +31,8 @@ class App extends Component {
                         : <Switch>
                               <Route path='/' exact component={NotebooksList}/>
                                 <Route path='/notebook/:id' component={NotesList}/>
-                                <Route path='/note/:id' component={NoteDetail}/>
+                                <Route path='/note/:id' component={EditNote}/>
+                                <Route path='/add/' component={AddNote}/>
                                 <Route render={()=><h3>No such page</h3>}/>
                             </Switch>
                     }

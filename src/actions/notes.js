@@ -4,6 +4,7 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 export const RECEIVE_NOTES = 'RECEIVE_NOTES';
 export const REMOVE_NOTE = 'REMOVE_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
+export const ADD_NOTE = 'ADD_NOTE';
 
 
 export const receiveNotes = (notes) =>{
@@ -20,6 +21,20 @@ export const removeNote = (id) =>{
     };
 }
 
+export const addNote = (note) =>{
+    return{
+        type: ADD_NOTE,
+        note,
+    }
+}
+
+export const updateNote = (note) =>{
+    return {
+        type: UPDATE_NOTE,
+        note,
+    }
+}
+
 export const handleRemoveNote = (id) =>{
     return (dispatch) => {
         dispatch(showLoading());
@@ -28,13 +43,6 @@ export const handleRemoveNote = (id) =>{
                 dispatch(removeNote(id));
                 dispatch(hideLoading());
             })
-    }
-}
-
-export const updateNote = (note) =>{
-    return {
-        type: UPDATE_NOTE,
-        note,
     }
 }
 
@@ -47,5 +55,16 @@ export const handleUpdateNote = (note) => {
                 dispatch(hideLoading());
             }
         );            
+    }
+}
+
+export const handleAddNote = (note) =>{
+    return (dispatch) => {
+        dispatch(showLoading());
+        return api.addNewNote(note)
+            .then((note)=>{
+                dispatch(addNote(note));
+                dispatch(hideLoading());
+            });
     }
 }

@@ -1,5 +1,5 @@
 import * as actions from '../../actions/notebooks';
-import { REMOVE_NOTE } from '../../actions/notes';
+import { REMOVE_NOTE, ADD_NOTE } from '../../actions/notes';
 import reducer from '../notebooks'; 
 
 describe ('Notebook reducer', ()=>{
@@ -69,8 +69,32 @@ describe ('Notebook reducer', ()=>{
         expect(result['1234'].notes)
             .not.toContain('3456');
     });
+
+    it('Should associate a new note to an existing notebook', ()=>{
+        const note = getNote();
+        const initialState = getNotebooks();
+
+        const result = reducer(initialState, {
+            type:ADD_NOTE,
+            note,
+        });
+
+        expect(result['1234'].notes)
+            .toContain(note.id);
+    });
 });
  
+const  getNote = () =>{
+    return {
+        id: '1000',
+        dateCreated: '149824673833',
+        lastUpdated: '149824673833',
+        notebookId: '1234',
+        title: 'My new note',
+        body:'This is a new note',
+    }
+}
+
 const getNotebook = ()=>{
     return {
         id: '1000',

@@ -2,7 +2,7 @@ import {
     RECEIVE_NOTEBOOKS, 
     ADD_NOTEBOOK,
     REMOVE_NOTEBOOK } from '../actions/notebooks';
-import { REMOVE_NOTE } from '../actions/notes';
+import { REMOVE_NOTE, ADD_NOTE } from '../actions/notes';
 
 export default function (state=null, action){
     switch (action.type){
@@ -38,7 +38,18 @@ export default function (state=null, action){
             });
          
             return newState;
-        }       
+        }      
+        case ADD_NOTE:{
+            const notebook = state[action.note.notebookId];
+
+            return {
+                ...state,
+                [notebook.id]:{
+                    ...notebook,
+                    notes:notebook.notes.concat([action.note.id])
+                }              
+            }
+        }
         default:
             return state;
     }

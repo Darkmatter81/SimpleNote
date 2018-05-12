@@ -10,6 +10,10 @@ class NotesList extends Component {
         this.props.dispatch( handleRemoveNote(id) );
     }
 
+    onAddNoteClick = ()=>{
+        this.props.history.push({pathname:'/add', params: {notebookId: this.props.notebook.id}});
+    }
+
     render() {
         const { notebook, notes } = this.props;
 
@@ -30,6 +34,9 @@ class NotesList extends Component {
                        </li>
                    ))}
                 </ul>
+                <button
+                    onClick={()=>this.onAddNoteClick()}    
+                >Add Note</button>
             </div>
         );
     }

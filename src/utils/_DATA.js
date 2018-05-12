@@ -124,3 +124,13 @@ export function _updateNote(note){
         setTimeout(()=>resolve(note), getLatency());
     })
 }
+
+export function _addNote(note){
+    note.id = generateID();
+    note.dateCreated = Date.now();
+    note.lastUpdated = null;
+    
+    return new Promise((resolve, reject) =>{
+        setTimeout(()=>resolve(note), getLatency());
+    })
+}
