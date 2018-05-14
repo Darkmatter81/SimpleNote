@@ -1,0 +1,42 @@
+.notebook-item {
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    min-height: 30px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 3px #dddddd;
+}
+
+.heading{
+    display:flex;
+    width: 350px;
+}
+
+.notebook-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+span {
+    line-height: 30px;
+}
+
+.options i{
+    cursor: pointer;
+    line-height: 30px;
+}
+
+.options i:first-child{
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

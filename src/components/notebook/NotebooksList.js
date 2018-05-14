@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleAddNotebook, handleRemoveNotebook } from '../actions/notebooks';
+import { handleAddNotebook, handleRemoveNotebook } from '../../actions/notebooks';
 import Notebook from './Notebook';
+
+import './NotebooksList.css';
+import Modal from '../common/Modal';
 
 class NotebooksList extends Component {
     state = { newNoteBook: '' };
@@ -27,7 +30,19 @@ class NotebooksList extends Component {
         return (
             <div>
                 <h2>Notebooks</h2>
-                <ul>
+                
+                <form onSubmit={this.onAddNotebookSubmit}>
+                    <input 
+                        onChange={this.onInputChange} 
+                        value={this.state.newNoteBook} 
+                        />
+                    <button 
+                        type='' 
+                        onClick={this.onAddNotebookClick}
+                        disabled={this.state.newNoteBook === ''}>Add Notebook</button>
+                </form>
+
+                <ul className='notebook-list'>
                     {Object.keys(notebooks).map((book)=>(
                         <li key={book}>
                             <Notebook 
@@ -39,16 +54,9 @@ class NotebooksList extends Component {
                     )}
                 </ul>
 
-                <form onSubmit={this.onAddNotebookSubmit}>
-                    <input 
-                        onChange={this.onInputChange} 
-                        value={this.state.newNoteBook} 
-                        />
-                    <button 
-                        type='' 
-                        onClick={this.onAddNotebookClick}
-                        disabled={this.state.newNoteBook === ''}>Add Notebook</button>
-                </form>
+                <Modal show={false}>
+                    Bob
+                </Modal>                
             </div>
         );
     }

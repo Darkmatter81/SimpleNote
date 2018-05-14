@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
 
 import { handleInitialData } from '../actions/shared';
-import NotebooksList from './NotebooksList';
+import NotebooksList from './notebook/NotebooksList';
 import NotesList from './NotesList';
 import EditNote from './EditNote';
 import AddNote from './AddNote';

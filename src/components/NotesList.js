@@ -11,7 +11,7 @@ class NotesList extends Component {
     }
 
     onAddNoteClick = ()=>{
-        this.props.history.push({pathname:'/add', params: {notebookId: this.props.notebook.id}});
+        this.props.history.replace({pathname:'/add', params: {notebookId: this.props.notebook.id}});
     }
 
     render() {
