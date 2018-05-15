@@ -5,9 +5,9 @@ import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
 
 import { handleInitialData } from '../actions/shared';
 import NotebooksList from './notebook/NotebooksList';
-import NotesList from './NotesList';
-import EditNote from './EditNote';
-import AddNote from './AddNote';
+import NotesList from './note/NotesList';
+import EditNote from './note/EditNote';
+import AddNote from './note/AddNote';
 
 import '../App.css';
 
@@ -29,7 +29,7 @@ class App extends Component {
                     {this.props.loading === true
                         ? null
                         : <Switch>
-                              <Route path='/' exact component={NotebooksList}/>
+                                <Route path='/' exact component={NotebooksList}/>
                                 <Route path='/notebook/:id' component={NotesList}/>
                                 <Route path='/note/:id' component={EditNote}/>
                                 <Route path='/add/' component={AddNote}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { handleUpdateNote } from '../actions/notes';
+import { handleUpdateNote } from '../../actions/notes';
 
 class EditNote extends Component {
     state = {  }

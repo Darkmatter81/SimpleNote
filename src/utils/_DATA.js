@@ -41,7 +41,7 @@ const notes = {
         dateCreated:1498234604747,
         lastUpdated:null,
         title:'Preparation',
-        body:'Stuff I need to remove for this amazing trip',
+        body:'Stuff I need to remove for this amazing trip. I need to do more research on what to do and see when I get to Thailand',
     },
     '20b45471-edf3-44db-9963-24c47b45c733':
     {

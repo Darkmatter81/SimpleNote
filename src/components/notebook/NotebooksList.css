@@ -1,3 +1,33 @@
 .notebook-list{
     padding: 0px;
 }
+
+.notebook-item {
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    min-height: 30px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 7px #d0d0d0d0;
+}
+
+.add-notebook-btn{
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding-right:0;
+}
+
+#notebook-input{
+    width:90%;
+    border: none;
+    outline: none;
+}
+
+#add-notebook-panel{
+    margin-bottom: 30px;
+}

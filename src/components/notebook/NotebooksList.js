@@ -31,15 +31,19 @@ class NotebooksList extends Component {
             <div>
                 <h2>Notebooks</h2>
                 
-                <form onSubmit={this.onAddNotebookSubmit}>
-                    <input 
+                <form id='add-notebook-panel' className='notebook-item' onSubmit={this.onAddNotebookSubmit}>
+                    <input
+                        id='notebook-input'
+                        placeholder='Add new notebook...'
                         onChange={this.onInputChange} 
                         value={this.state.newNoteBook} 
                         />
                     <button 
-                        type='' 
-                        onClick={this.onAddNotebookClick}
-                        disabled={this.state.newNoteBook === ''}>Add Notebook</button>
+                        className='add-notebook-btn'
+                        disabled={this.state.newNoteBook === ''}
+                        title='Add new notebook'>
+                            <i className="fas fa-plus"></i>
+                    </button>
                 </form>
 
                 <ul className='notebook-list'>
@@ -52,11 +56,7 @@ class NotebooksList extends Component {
                         </li>
                         )
                     )}
-                </ul>
-
-                <Modal show={false}>
-                    Bob
-                </Modal>                
+                </ul>              
             </div>
         );
     }

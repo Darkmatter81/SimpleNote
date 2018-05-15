@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Note from './Note';
-import { handleRemoveNote } from '../actions/notes';
+import { handleRemoveNote } from '../../actions/notes';
 
 class NotesList extends Component {
     state = {  };
