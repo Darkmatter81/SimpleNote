@@ -22,7 +22,7 @@ class Notebook extends Component {
         const { notebook } = this.props;
 
         return (
-            <div className='notebook-item' 
+            <div className='notebook-item note-panel' 
                  style={{cursor:'pointer'}}
                  onClick={this.onNotebookClick}>
                 <div className='heading'>

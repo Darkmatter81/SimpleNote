@@ -4,7 +4,6 @@ import { handleAddNotebook, handleRemoveNotebook } from '../../actions/notebooks
 import Notebook from './Notebook';
 
 import './NotebooksList.css';
-import Modal from '../common/Modal';
 
 class NotebooksList extends Component {
     state = { newNoteBook: '' };
@@ -31,7 +30,7 @@ class NotebooksList extends Component {
             <div>
                 <h2>Notebooks</h2>
                 
-                <form id='add-notebook-panel' className='notebook-item' onSubmit={this.onAddNotebookSubmit}>
+                <form id='add-notebook-panel' className='note-panel' onSubmit={this.onAddNotebookSubmit}>
                     <input
                         id='notebook-input'
                         placeholder='Add new notebook...'

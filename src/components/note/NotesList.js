@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Note from './Note';
 import { handleRemoveNote } from '../../actions/notes';
+import NewNoteBar from './NewNoteBar';
 
 class NotesList extends Component {
     state = {  };
@@ -24,12 +25,15 @@ class NotesList extends Component {
         return (
             <div>
                 <h2>{notebook.name}</h2>
+                
+                <NewNoteBar />
+                
                 <ul>
                     {notes.map((note)=>(
                         <li key={note.id}>
                           <Note 
                             note={note}
-                            onRemoveClick = {()=>this.onRemoveNoteClick(note.id)}
+                            onDeleteNote = {()=>this.onRemoveNoteClick(note.id)}
                             />
                        </li>
                    ))}

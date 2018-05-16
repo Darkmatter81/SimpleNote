@@ -1,11 +1,7 @@
 .note-item{
-    border: 1px solid #dddddd;
-    border-radius: 3px;
+    margin-bottom: 30px;
     max-width: 250px;
     max-height: 400px;
-    padding: 10px;
-    box-shadow: 3px 3px 7px #d0d0d0d0;
-    margin-bottom: 30px;
 }
 
 p{

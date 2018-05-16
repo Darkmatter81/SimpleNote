@@ -1,41 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import BasicNoteOptions from './BasicNoteOptions';
 
 import './Note.css'
 
 class Note extends Component {
     state = {  };
 
+    static propTypes = {
+        note: PropTypes.object.isRequired,
+        onDeleteNote:PropTypes.func.isRequired,
+    };
+
     render() {
-        const { note } = this.props;
+        const { note, onDeleteNote } = this.props;
+
         return (
-            <div className='note-item'>
+            <div className='note-panel note-item'>
                <p className='title'>{note.title}</p>
                <p>{note.body}</p>
 
-               <BasicOptions />        
-    
+               <BasicNoteOptions onDelete = { ()=>onDeleteNote(note.id) }/>        
             </div>        
         );
     }
 }
 
-
-const BasicOptions = (props) =>{
-    return (
-        <div className='options-bar'>
-            <i className="far fa-trash-alt" title='Delete note'/>
-        </div>
-    );
-}
-
 export default Note;
-
- {/* <Link to={`/note/${note.id}`}>
-                    { note.title }
-                </Link>
-
-                <button
-                    onClick={()=>this.props.onRemoveClick(note.id)}> 
-                    X
-                </button> */}
