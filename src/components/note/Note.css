@@ -1,4 +1,6 @@
 .note-item{
+    display: flex;
+    flex-direction: column;
     margin-bottom: 30px;
     max-width: 250px;
     max-height: 400px;
@@ -23,4 +25,10 @@ p{
 .options-bar *{
     margin-left: 10px;
     cursor: pointer;
+}
+
+.note-item textarea{
+    flex: 1;
+    overflow:auto;
+    resize: none;
 }

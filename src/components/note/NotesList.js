@@ -26,7 +26,7 @@ class NotesList extends Component {
             <div>
                 <h2>{notebook.name}</h2>
                 
-                <NewNoteBar />
+                <NewNoteBar notebookId = {notebook.id}/>
                 
                 <ul>
                     {notes.map((note)=>(
@@ -38,9 +38,6 @@ class NotesList extends Component {
                        </li>
                    ))}
                 </ul>
-                <button
-                    onClick={()=>this.onAddNoteClick()}    
-                >Add Note</button>
             </div>
         );
     }
