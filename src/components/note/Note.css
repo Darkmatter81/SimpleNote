@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-    max-width: 250px;
+    min-width: 250px;
+    /* max-width: 600px; */
     max-height: 400px;
 }
 
@@ -13,6 +14,7 @@ p{
 .title{
     font-weight: bold;
     margin-bottom: 5px;
+    padding: 0;
 }
 
 .options-bar{
@@ -31,4 +33,12 @@ p{
     flex: 1;
     overflow:auto;
     resize: none;
+    padding: 0;
+    margin: 0;
 }
+
+.editing{
+    width: 600px;
+    margin: auto 0;
+}
+

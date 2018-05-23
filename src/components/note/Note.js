@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BasicNoteOptions from './BasicNoteOptions';
 
@@ -14,61 +14,63 @@ class Note extends Component {
     };
 
     componentDidMount(){
-        this.resizeTextArea();
-    }
-
-    resizeTextArea = ()=>{
-        this.textArea.style.cssText='height:auto;';
-        this.textArea.style.cssText='height:'+ this.textArea.scrollHeight+'px';
-    }
-
-    onClickNote = (e)=>{
-        let editorFocus;
-
-        if (e.target.tagName.toLowerCase() === 'p'){
-            editorFocus = 'title';
-        }
-        else{
-            editorFocus = 'body';
-        }
-
         this.setState({
-            editorOpen: true,
-            editorFocus,
-        })
+            note: {...this.props.note}
+        });      
+
+        document.addEventListener('mousedown', this.handleMouseDown);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('mousedown', this.handleMouseDown);
+    }
+
+    handleMouseDown = (e)=>{
+        if (!this.noteItem.contains(e.target)){
+            this.setState({editorOpen : false});
+            console.log('no longer editing')
+        }
     }
 
     onUpdateNote = (note) =>{
-
+        this.setState ({
+            note: { ...note }
+        });
     } 
 
+    onClickEditor = (e) =>{
+        console.log('clicking editor');
+        if (!this.state.editorOpen){
+            this.setState({editorOpen: true});
+        }
+    }
+
     render() {
-        const { note, onDeleteNote } = this.props;
+        const { onDeleteNote } = this.props;
+        const { note } = this.state;
+
+        if (!note){
+            return null;
+        }
+
+        let classNames = ['note-panel', 'note-item'];
+        if (this.state.editorOpen){
+            classNames.push('editing');
+        }
 
         return (
-            <div className='note-panel note-item'>
-               {this.state.editorOpen === false &&
-                    <Fragment>
-                        <p className='title'
-                           onClick={this.onClickNote}>
-                           {note.title}</p>
-                        <textarea 
-                                ref={(element)=>this.textArea = element}
-                                onClick={this.onClickNote}
-                                value={note.body}
-                                readOnly>
-                        </textarea>
-                    </Fragment>
-               }
-
-               {this.state.editorOpen &&
-                    <NoteEditor 
-                        note={note}
-                        editorFocus={this.state.editorFocus} 
-                        onUpdateNote={this.onUpdateNote}  
-                    />
-               }
-
+            <div 
+                className={classNames.join(' ')} 
+                ref={(element)=>this.noteItem = element}>
+                
+                <NoteEditor 
+                    ref={(element) => this.editor = element}
+                    note={note}
+                    onGetFocus = {this.onClickEditor}
+                    editorFocus={this.state.editorFocus} 
+                    onUpdateNote={this.onUpdateNote }  
+                />
+            
                <BasicNoteOptions onDeleteNoteClick = { ()=>onDeleteNote(note.id) }/>        
             </div>        
         );

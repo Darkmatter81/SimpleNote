@@ -6,7 +6,7 @@ const notebooks = {
         id: '64a0dfa3-f733-4181-b076-e151ac5444e1',
         createdDate: 1497767969205,
         name: 'Backpacking trip of a life time to Thailand',
-        notes: ['df20f1fd-274c-457e-932e-397df638fd68', '8c5ad87a-53a1-481b-a5bf-04c6bbfb28c3'],
+        notes: ['df20f1fd-274c-457e-932e-397df638fd68', '8c5ad87a-53a1-481b-a5bf-04c6bbfb28c3', '1234556a-53a1-481b-a5bf-04c6bbfb28c3'],
     },
     '4174e999-8f03-4da7-b8f3-28ed0cf0304a':
     {
@@ -37,6 +37,15 @@ const notes = {
     '8c5ad87a-53a1-481b-a5bf-04c6bbfb28c3':
     {
         id: '8c5ad87a-53a1-481b-a5bf-04c6bbfb28c3',
+        notebookId:'64a0dfa3-f733-4181-b076-e151ac5444e1',
+        dateCreated:1498234604747,
+        lastUpdated:null,
+        title:'Preparation',
+        body:'Stuff I need to remove for this amazing trip. I need to do more research on what to do and see when I get to Thailand\r Stuff I need to remove for this amazing trip. I need to do more research on what to do and see when I get to Thailand\nStuff I need to remove for this amazing trip. I need to do more research on what to do and see when I get to Thailand',
+    },
+    '1234556a-53a1-481b-a5bf-04c6bbfb28c3':
+    {
+        id: '1234556a-53a1-481b-a5bf-04c6bbfb28c3',
         notebookId:'64a0dfa3-f733-4181-b076-e151ac5444e1',
         dateCreated:1498234604747,
         lastUpdated:null,

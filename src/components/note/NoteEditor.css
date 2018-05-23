@@ -1,0 +1,34 @@
+.note-editor{
+    display: flex;
+    flex-direction: column;   
+}
+
+.note-editor input, textarea {
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+input::placeholder{
+    font-weight: bold;
+}
+
+.editor-title{
+    font-weight: bold;
+}
+
+.editor-title::placeholder{
+    font-weight: bold;
+}
+
+.note-editor input{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.note-editor textarea{
+    resize: none;
+    overflow: auto;
+    padding:0;
+    margin: 0;
+}

@@ -1,0 +1,10 @@
+.new-note-bar {
+    padding-top: 15px;
+    padding-top:15px !important;
+    padding-bottom:15px !important;
+    /* max-width: 600px; */
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}

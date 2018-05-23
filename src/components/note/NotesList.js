@@ -4,6 +4,8 @@ import Note from './Note';
 import { handleRemoveNote } from '../../actions/notes';
 import NewNoteBar from './NewNoteBar';
 
+import './NotesList.css';
+
 class NotesList extends Component {
     state = {  };
 
@@ -24,13 +26,21 @@ class NotesList extends Component {
 
         return (
             <div>
-                <h2>{notebook.name}</h2>
-                
-                <NewNoteBar notebookId = {notebook.id}/>
-                
-                <ul>
+                <div className='row'>
+                    <div className='col-12 text-center'>
+                        <h2>{notebook.name}</h2>
+                    </div>
+                </div>
+
+                <div className='row'>
+                    <div className='col-12'>
+                        <NewNoteBar notebookId = {notebook.id}/>
+                    </div>
+                </div>
+
+                <ul className=''>
                     {notes.map((note)=>(
-                        <li key={note.id}>
+                        <li className='' key={note.id}>
                           <Note 
                             note={note}
                             onDeleteNote = {()=>this.onRemoveNoteClick(note.id)}
