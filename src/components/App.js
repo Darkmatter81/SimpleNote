@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import LoadingBar from 'react-redux-loading';
 import { connect } from 'react-redux';
 import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
@@ -9,7 +9,7 @@ import NotesList from './note/NotesList';
 import EditNote from './note/EditNote';
 import AddNote from './note/AddNote';
 
-import '../App.css';
+import './styles/App.css';
 
 class App extends Component {
   state = {
@@ -22,10 +22,10 @@ class App extends Component {
   
   render() {
     return (
-      <div className='container'>
+      <div className=''>
+        <LoadingBar />   
         <Router>
-        	<Fragment>
-                <LoadingBar />   
+        	<div className='container'>
                     {this.props.loading === true
                         ? null
                         : <Switch>
@@ -36,7 +36,7 @@ class App extends Component {
                                 <Route render={()=><h3>No such page</h3>}/>
                             </Switch>
                     }
-            </Fragment>
+            </div>
         </Router>
       </div>
     );

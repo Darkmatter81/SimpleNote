@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { handleAddNotebook, handleRemoveNotebook } from '../../actions/notebooks';
 import Notebook from './Notebook';
 
-import './NotebooksList.css';
+import '../styles/NotebooksList.css';
 
 class NotebooksList extends Component {
     state = { newNoteBook: '' };

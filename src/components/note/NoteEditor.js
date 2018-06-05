@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './NoteEditor.css'
+import '../styles/NoteEditor.css'
 
 class NoteEditor extends Component {
     state = { updateTimeout: 0 };

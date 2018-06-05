@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import NoteEditor from './NoteEditor';
 import PropTypes from 'prop-types';
 
-import './NewNoteBar.css';
+import '../styles/NewNoteBar.css';
 import { handleAddNote } from '../../actions/notes';
 import BasicNoteOptions from './BasicNoteOptions';
 

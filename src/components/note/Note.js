@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BasicNoteOptions from './BasicNoteOptions';
 
-import './Note.css'
+import '../styles/Note.css'
 import NoteEditor from './NoteEditor';
 
 class Note extends Component {

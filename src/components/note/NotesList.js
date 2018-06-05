@@ -4,7 +4,7 @@ import Note from './Note';
 import { handleRemoveNote } from '../../actions/notes';
 import NewNoteBar from './NewNoteBar';
 
-import './NotesList.css';
+import '../styles/NotesList.css';
 
 class NotesList extends Component {
     state = {  };

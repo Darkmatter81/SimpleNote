@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom'
 
-import './notebook.css';
+import '../styles/notebook.css';
 
 class Notebook extends Component {
     state = {  }
