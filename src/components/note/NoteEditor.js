@@ -46,17 +46,6 @@ class NoteEditor extends Component {
         }), ()=>this.props.onUpdateNote(this.state.note));
     }
 
-    waitForUpdate = () =>{
-        if (this.state.updateTimeout === 0){
-            const updateTimeout = 
-                setTimeout(()=>{
-                    this.props.onUpdateNote(this.state.note);
-                    this.setState({updateTimeout: 0});
-                }, 1000);
-            this.setState({updateTimeout: updateTimeout});
-        }        
-    }
-
     resizeTextArea = (textArea) =>{
         // Expand/Shrink text area depending on contents
         textArea.style.cssText='height:auto;';
@@ -95,13 +84,14 @@ class NoteEditor extends Component {
                     onChange={this.onTitleChanged}
                 />       
 
-                <textarea id='body'
-                          onChange={this.onBodyChanged} 
-                          placeholder='Take a note...' 
-                          value={note.body}
-                          readOnly={!editable}
-                          autoFocus={this.props.editorFocus === 'body'}
-                          ref={(element)=>this.textArea = element}
+                <textarea 
+                    id='body'
+                    onChange={this.onBodyChanged} 
+                    placeholder='Take a note...' 
+                    value={note.body}
+                    readOnly={!editable}
+                    autoFocus={this.props.editorFocus === 'body'}
+                    ref={(element)=>this.textArea = element}
                 /> 
             </div>
         );

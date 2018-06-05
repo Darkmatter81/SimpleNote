@@ -5,6 +5,7 @@ ul {
 .note-panel{
     border: 1px solid #dddddd;
     border-radius: 3px;
+    background-color: #ffffff;
     padding: 10px;
     box-shadow: 3px 3px 7px #d0d0d0d0;
 }

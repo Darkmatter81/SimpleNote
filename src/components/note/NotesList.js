@@ -5,9 +5,11 @@ import { handleRemoveNote } from '../../actions/notes';
 import NewNoteBar from './NewNoteBar';
 
 import '../styles/NotesList.css';
+import EditNote from './EditNote';
+import NoteEditor from './NoteEditor';
 
 class NotesList extends Component {
-    state = {  };
+    state = { openNote: null };
 
     onRemoveNoteClick = (id) =>{
         this.props.dispatch( handleRemoveNote(id) );
@@ -15,6 +17,14 @@ class NotesList extends Component {
 
     onAddNoteClick = ()=>{
         this.props.history.replace({pathname:'/add', params: {notebookId: this.props.notebook.id}});
+    }
+
+    onOpenNote = (note) => {
+        this.setState({openNote: note});
+    }
+
+    onCloseNote = () =>{
+
     }
 
     render() {
@@ -33,21 +43,28 @@ class NotesList extends Component {
                 </div>
 
                 <div className='row'>
-                    <div className='col-12'>
+                    <div className='col-12 col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2'>
                         <NewNoteBar notebookId = {notebook.id}/>
                     </div>
                 </div>
 
-                <ul className=''>
+                <ul className='row'>
                     {notes.map((note)=>(
-                        <li className='' key={note.id}>
+                        <li className='col-12 col-md-4' key={note.id}>
                           <Note 
                             note={note}
+                            onOpenNote = {()=>this.onOpenNote(note)}
                             onDeleteNote = {()=>this.onRemoveNoteClick(note.id)}
                             />
                        </li>
                    ))}
                 </ul>
+
+                {this.state.openNote !== null &&
+                    <EditNote 
+                        note = {this.state.openNote}
+                    />
+                }
             </div>
         );
     }

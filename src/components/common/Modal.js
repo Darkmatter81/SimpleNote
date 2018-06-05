@@ -21,9 +21,9 @@ class Modal extends React.Component {
         // The gray background
         return (
             <div className="backdrop">
-                <div className="modal">
+                <div className="simple-modal">
                     {this.props.children}
-
+                    
                     <div className="footer">
                         <button onClick={this.props.onClose}>
                         Close

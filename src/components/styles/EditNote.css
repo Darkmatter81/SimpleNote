@@ -1,0 +1,15 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(59, 58, 58, 0.3);
+    /* padding: 50px; */
+  }
+
+  .edit-note {
+    display: flex; 
+    width:600px;
+    margin: 30px auto;
+  }

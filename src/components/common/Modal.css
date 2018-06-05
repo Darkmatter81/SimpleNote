@@ -9,11 +9,10 @@
   }
 
    /* The modal "window" */
- .modal {
+ .simple-modal {
     background-color: #ffffff;
     border-radius: 5px;
-    max-width: 200px;
-    min-height: 30px;
+    min-height: 130px;
     margin: 0 auto;
     padding: 30px;
   }

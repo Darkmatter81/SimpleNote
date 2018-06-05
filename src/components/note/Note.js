@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import BasicNoteOptions from './BasicNoteOptions';
 
 import '../styles/Note.css'
-import NoteEditor from './NoteEditor';
 
 class Note extends Component {
     state = { editorOpen: false };
@@ -11,6 +10,7 @@ class Note extends Component {
     static propTypes = {
         note: PropTypes.object.isRequired,
         onDeleteNote:PropTypes.func.isRequired,
+        onOpenNote:PropTypes.func.isRequired,
     };
 
     componentDidMount(){
@@ -38,39 +38,35 @@ class Note extends Component {
         });
     } 
 
-    onClickEditor = (e) =>{
-        console.log('clicking editor');
+    onClickNote = (e) =>{
         if (!this.state.editorOpen){
             this.setState({editorOpen: true});
         }
     }
 
     render() {
-        const { onDeleteNote } = this.props;
+        const { onDeleteNote, onOpenNote } = this.props;
         const { note } = this.state;
 
         if (!note){
             return null;
         }
 
-        let classNames = ['note-panel', 'note-item'];
-        if (this.state.editorOpen){
-            classNames.push('editing');
-        }
-
         return (
             <div 
-                className={classNames.join(' ')} 
+                className='note-panel note-item'
                 ref={(element)=>this.noteItem = element}>
                 
-                <NoteEditor 
-                    ref={(element) => this.editor = element}
-                    note={note}
-                    onGetFocus = {this.onClickEditor}
-                    editorFocus={this.state.editorFocus} 
-                    onUpdateNote={this.onUpdateNote }  
+                <input id='title' 
+                       defaultValue={note.title}
+                       onFocus={() => onOpenNote(note.id)}
                 />
-            
+
+                <textarea id='body'
+                        defaultValue={note.body}
+                        onFocus={() => onOpenNote(note)}
+                />
+
                <BasicNoteOptions onDeleteNoteClick = { ()=>onDeleteNote(note.id) }/>        
             </div>        
         );

@@ -1,9 +1,10 @@
 .note-editor{
     display: flex;
     flex-direction: column;   
+    width:100%;
 }
 
-.note-editor input, textarea {
+.note-editor input, .note-editor textarea {
     outline: none;
     border: none;
     width: 100%;
@@ -26,9 +27,15 @@ input::placeholder{
     font-weight: bold;
 }
 
-.note-editor textarea{
+.editor-title{
+    resize: none;
+    max-height: 30px;
+}
+
+#body{
     resize: none;
     overflow: auto;
     padding:0;
     margin: 0;
+    max-height: 300px;  
 }

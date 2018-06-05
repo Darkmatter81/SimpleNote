@@ -27,7 +27,7 @@ class NotebooksList extends Component {
         const { notebooks } = this.props;
 
         return (
-            <div className=''>
+            <div>
                 <div className='row'>
                     <div className='col-md-12 text-center'>
                         <h2>Notebooks</h2>

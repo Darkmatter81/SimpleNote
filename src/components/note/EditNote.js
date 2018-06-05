@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 
 import { handleUpdateNote } from '../../actions/notes';
 
+import '../styles/EditNote.css'
+import NoteEditor from './NoteEditor';
+
 class EditNote extends Component {
     state = {  }
 
@@ -13,10 +16,7 @@ class EditNote extends Component {
     }
 
     componentDidMount(){
-        const { note } = this.props;
-        this.setState({
-            note: note !== null ? { ...note } : null
-        });
+     
     }
 
     onTitleChange = (e) =>{
@@ -38,42 +38,23 @@ class EditNote extends Component {
     }
 
     render() {
-        const { note } = this.state;
+        const { note } = this.props;
 
         if (!note){
             return <p>Note not found</p>
         }
 
         return (
-            <div>
-                <form onSubmit = {this.onNoteUpdate}>
-                    <div>
-                        <input 
-                            onChange = {this.onTitleChange}
-                            value = {note.title}
-                        />
-                    </div>
-
-                    <div>
-                        <textarea
-                            onChange = {this.onBodyChange}
-                            value = {note.body} 
-                        />
-                    </div>
-                    
-                    <button>Update</button>
-                </form>
+            <div className='backdrop'>
+               <div className='edit-note note-panel'>
+                    <NoteEditor note = {note} />
+               </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = ({notes}, {match}) =>{
-    const note = notes[match.params.id];
-
-    return {
-        note: note !== undefined ? note : null
-    };
 }
 
 export default connect(mapStateToProps)(EditNote);
