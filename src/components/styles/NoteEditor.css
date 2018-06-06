@@ -32,7 +32,7 @@ input::placeholder{
     max-height: 30px;
 }
 
-#body{
+#editor-body{
     resize: none;
     overflow: auto;
     padding:0;

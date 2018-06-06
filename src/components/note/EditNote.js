@@ -1,60 +1,72 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import '../styles/EditNote.css';
+import NoteEditor from './NoteEditor';
 import { handleUpdateNote } from '../../actions/notes';
 
-import '../styles/EditNote.css'
-import NoteEditor from './NoteEditor';
-
 class EditNote extends Component {
-    state = {  }
-
-    onNoteUpdate = (e) =>{
-        e.preventDefault();
-        this.props.dispatch(handleUpdateNote(this.state.note));
-        this.props.history.push(`/notebook/${this.state.note.notebookId}`);
-    }
+    state = {updateTimeOut: 0, note: null};
 
     componentDidMount(){
-     
+        this.setState({note: this.props.note});
+
+        document.addEventListener('mousedown', this.handleMouseDown);
     }
 
-    onTitleChange = (e) =>{
-        const value = e.target.value;
-        this.setState({ note: {
-                ...this.state.note,
-                title: value
-            }
-        });
+    componentWillUnmount(){
+        document.removeEventListener('mousedown', this.handleMouseDown);
+        clearTimeout(this.state.updateTimeOut);
     }
 
-    onBodyChange = (e) =>{
-        const value = e.target.value;
-        this.setState({note : {
-                ...this.state.note,
-                body: value
-            }
-        });
+    handleMouseDown = (e)=>{
+        if (!this.editorPanel.contains(e.target)){
+            this.closeNote();
+        }
+    }
+
+    onNoteUpdate = (note) =>{
+        if (this.state.updateTimeOut !==0 ){
+            clearTimeout(this.state.updateTimeOut);
+        }
+
+        const timeOut = setTimeout(this.updateNote, 2000);
+        this.setState({updateTimeOut: timeOut, note});
+    }
+
+    updateNote = () => {
+        this.props.dispatch(handleUpdateNote(this.state.note));
+        this.setState({updateTimeOut: 0 });
+    }
+
+    closeNote = () => {
+        // clear update timer and dispatch pending note to be saved
+        if (this.state.updateTimeOut !== 0){
+            clearTimeout(this.state.updateTimeOut);
+            this.updateNote();
+        }
+
+        this.props.onClose();
     }
 
     render() {
-        const { note } = this.props;
+        const { note } = this.state;
 
-        if (!note){
-            return <p>Note not found</p>
+        if (note === null){
+            return null;
         }
 
         return (
             <div className='backdrop'>
-               <div className='edit-note note-panel'>
-                    <NoteEditor note = {note} />
+               <div className='note-panel edit-note' ref={(element)=>this.editorPanel = element}>
+                    <NoteEditor 
+                        note = {note}
+                        onUpdateNote = {this.onNoteUpdate}
+                        editorFocus = {this.props.editorFocus}
+                    />
                </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = ({notes}, {match}) =>{
-}
-
-export default connect(mapStateToProps)(EditNote);
+export default connect()(EditNote);

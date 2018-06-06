@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import '../styles/NoteEditor.css'
+import React, { Component } from 'react';
+import '../styles/NoteEditor.css';
 
 class NoteEditor extends Component {
-    state = { updateTimeout: 0 };
+    state = {note: null};
 
     static propTypes = {
         note:PropTypes.object.isRequired,
@@ -52,12 +51,6 @@ class NoteEditor extends Component {
         textArea.style.cssText='height:'+ textArea.scrollHeight+'px';
     }
 
-    componentWillUnmount(){
-        // clear update timer and push any unsaved changes
-        clearInterval(this.state.updateTimeout);
-        this.props.onUpdateNote(this.state.note);
-    }
-
     onGetFocus = () =>{
         if (this.props.onGetFocus !== undefined){
             this.props.onGetFocus();
@@ -85,7 +78,7 @@ class NoteEditor extends Component {
                 />       
 
                 <textarea 
-                    id='body'
+                    id='editor-body'
                     onChange={this.onBodyChanged} 
                     placeholder='Take a note...' 
                     value={note.body}

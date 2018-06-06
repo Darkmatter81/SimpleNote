@@ -32,7 +32,7 @@ const notes = {
         dateCreated:1498234603002,
         lastUpdated:1545555953002,
         title:'Things to do in Rome',
-        body:'* Visit the Colosseum\n, * Visit The Vatican ',
+        body:'* Visit the Colosseum\n * Visit The Vatican ',
     },
     '8c5ad87a-53a1-481b-a5bf-04c6bbfb28c3':
     {

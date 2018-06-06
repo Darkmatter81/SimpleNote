@@ -11,24 +11,28 @@ p{
     margin:0;
 }
 
-#title{
+#note-title{
     font-weight: bold;
     margin-bottom: 5px;
     padding: 0;
+    resize: none;
+    overflow: hidden;
 }
 
-#title, #body  {
+#note-title, #note-body  {
     outline: none;
     border: none;
     width: 100%;
     cursor: pointer;
 }
 
-#body{
+#note-body{
     resize: none;
     overflow: hidden;
     padding:0;
     margin: 0;
+    flex: 1;
+    
 }
 
 .options-bar{
@@ -41,14 +45,6 @@ p{
 .options-bar *{
     margin-left: 10px;
     cursor: pointer;
-}
-
-.note-item textarea{
-    flex: 1;
-    overflow:auto;
-    resize: none;
-    padding: 0;
-    margin: 0;
 }
 
 .editing{

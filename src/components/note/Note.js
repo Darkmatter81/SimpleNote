@@ -13,40 +13,8 @@ class Note extends Component {
         onOpenNote:PropTypes.func.isRequired,
     };
 
-    componentDidMount(){
-        this.setState({
-            note: {...this.props.note}
-        });      
-
-        document.addEventListener('mousedown', this.handleMouseDown);
-    }
-
-    componentWillUnmount(){
-        document.removeEventListener('mousedown', this.handleMouseDown);
-    }
-
-    handleMouseDown = (e)=>{
-        if (!this.noteItem.contains(e.target)){
-            this.setState({editorOpen : false});
-            console.log('no longer editing')
-        }
-    }
-
-    onUpdateNote = (note) =>{
-        this.setState ({
-            note: { ...note }
-        });
-    } 
-
-    onClickNote = (e) =>{
-        if (!this.state.editorOpen){
-            this.setState({editorOpen: true});
-        }
-    }
-
     render() {
-        const { onDeleteNote, onOpenNote } = this.props;
-        const { note } = this.state;
+        const { onDeleteNote, onOpenNote, note } = this.props;
 
         if (!note){
             return null;
@@ -57,14 +25,16 @@ class Note extends Component {
                 className='note-panel note-item'
                 ref={(element)=>this.noteItem = element}>
                 
-                <input id='title' 
-                       defaultValue={note.title}
-                       onFocus={() => onOpenNote(note.id)}
+                <textarea id='note-title' 
+                       value={note.title}
+                       onClick={() => onOpenNote(note, 'title')}
+                       readOnly={true}
                 />
 
-                <textarea id='body'
-                        defaultValue={note.body}
-                        onFocus={() => onOpenNote(note)}
+                <textarea id='note-body'
+                        value={note.body}
+                        onClick={() => onOpenNote(note, 'body')}
+                        readOnly={true}
                 />
 
                <BasicNoteOptions onDeleteNoteClick = { ()=>onDeleteNote(note.id) }/>        

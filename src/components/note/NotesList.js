@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Note from './Note';
 import { handleRemoveNote } from '../../actions/notes';
+import EditNote from './EditNote';
 import NewNoteBar from './NewNoteBar';
+import Note from './Note';
 
 import '../styles/NotesList.css';
-import EditNote from './EditNote';
-import NoteEditor from './NoteEditor';
+
 
 class NotesList extends Component {
-    state = { openNote: null };
+    state = { openNote: null, openFocus: 'body'};
 
     onRemoveNoteClick = (id) =>{
         this.props.dispatch( handleRemoveNote(id) );
@@ -19,12 +19,12 @@ class NotesList extends Component {
         this.props.history.replace({pathname:'/add', params: {notebookId: this.props.notebook.id}});
     }
 
-    onOpenNote = (note) => {
-        this.setState({openNote: note});
+    onOpenNote = (note, focus) => {
+        this.setState({openNote: note, openFocus: focus});
     }
 
     onCloseNote = () =>{
-
+        this.setState({openNote: null});
     }
 
     render() {
@@ -53,7 +53,7 @@ class NotesList extends Component {
                         <li className='col-12 col-md-4' key={note.id}>
                           <Note 
                             note={note}
-                            onOpenNote = {()=>this.onOpenNote(note)}
+                            onOpenNote = {this.onOpenNote}
                             onDeleteNote = {()=>this.onRemoveNoteClick(note.id)}
                             />
                        </li>
@@ -63,6 +63,8 @@ class NotesList extends Component {
                 {this.state.openNote !== null &&
                     <EditNote 
                         note = {this.state.openNote}
+                        onClose = {this.onCloseNote}
+                        editorFocus={this.state.openFocus}
                     />
                 }
             </div>
