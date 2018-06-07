@@ -30,7 +30,7 @@ class NotebooksList extends Component {
             <div>
                 <div className='row'>
                     <div className='col-md-12 text-center'>
-                        <h2>Notebooks</h2>
+                        <h2 id='title'>Notebooks</h2>
                     </div>
                 </div>
 

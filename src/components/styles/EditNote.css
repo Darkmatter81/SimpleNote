@@ -9,7 +9,8 @@
 
   .edit-note {
     min-height: 140px;
-    width:600px;
+    min-width: 50px;
+    max-width: 600px;
     margin: 90px auto;
     box-shadow: 3px 3px 7px #6d6d6dd0 !important;
   }

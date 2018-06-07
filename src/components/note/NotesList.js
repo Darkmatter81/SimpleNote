@@ -38,7 +38,7 @@ class NotesList extends Component {
             <div>
                 <div className='row'>
                     <div className='col-12 text-center'>
-                        <h2>{notebook.name}</h2>
+                        <h2 id='note-title'>{notebook.name}</h2>
                     </div>
                 </div>
 

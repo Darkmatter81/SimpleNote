@@ -18,5 +18,8 @@
     padding-top: 15px;
     padding-bottom: 15px;
     margin-bottom: 30px;
-    /* max-width: 500px; */
+}
+
+#title{
+    margin-bottom: 30px;
 }
