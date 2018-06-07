@@ -143,3 +143,9 @@ export function _addNote(note){
         setTimeout(()=>resolve(note), getLatency());
     })
 }
+
+export function _updateNotebookName(id, name){
+    return new Promise((resolve, reject) => {
+        setTimeout(()=>resolve(), getLatency());
+    });
+}

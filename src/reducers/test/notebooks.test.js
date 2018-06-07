@@ -82,6 +82,17 @@ describe ('Notebook reducer', ()=>{
         expect(result['1234'].notes)
             .toContain(note.id);
     });
+
+    it('Should change the name of an existing notebook', ()=>{
+        const notebook = getNotebook();
+        const result = reducer(getNotebooks(), {
+                type: actions.UPDATE_NOTEBOOK_NAME,
+                id:'1234',
+                name:'Summer Plans'
+            });
+        
+        expect(result).toMatchObject({'1234':{id:'1234', name:'Summer Plans'}});
+    });
 });
  
 const  getNote = () =>{

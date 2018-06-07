@@ -28,6 +28,17 @@ describe ('Notebook actions', ()=>{
 
         expect(notebookActions.removeNotebook('1000')).toEqual(expected);
     });
+
+    it('Should create an action to update notebook name',()=>{
+        const expected = {
+            type: notebookActions.UPDATE_NOTEBOOK_NAME,
+            id: 1000,
+            name: 'Summer Plans'
+        };
+
+        expect(notebookActions.updateNotebookName(1000, 'Summer Plans'))
+            .toEqual(expected);
+    });
 });
 
 const getNotebook = ()=>{

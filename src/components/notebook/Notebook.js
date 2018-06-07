@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
 
 import '../styles/notebook.css';
+import { updateNotebookName, handleUpdateNotebookName } from '../../actions/notebooks';
 
 class Notebook extends Component {
     state = { editingName: false, notebookName:'' }
@@ -41,7 +43,7 @@ class Notebook extends Component {
 
     updateNotebookName = () =>{
         if (this.state.notebookName !== ''){
-            // dispatch to update
+            this.props.dispatch(handleUpdateNotebookName(this.props.notebook.id, this.state.notebookName));
         }
         this.setState({editingName: false});
     }
@@ -100,4 +102,6 @@ class Notebook extends Component {
     }
 }
 
-export default withRouter(Notebook);
+const notebook = withRouter(Notebook);
+ 
+export default connect()(notebook);

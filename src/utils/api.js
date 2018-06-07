@@ -4,7 +4,8 @@ import { _getNotebooks,
         _removeNotebook, 
         _removeNote,
         _updateNote,
-        _addNote, } from './_DATA';
+        _addNote,
+        _updateNotebookName, } from './_DATA';
 
 export function getInitialData(){
     return Promise.all([
@@ -31,4 +32,8 @@ export function udpateNote(note){
 
 export function addNewNote(note){
     return _addNote(note);
+}
+
+export function updateNoteBookName(id, name){
+    return _updateNotebookName(id, name);
 }

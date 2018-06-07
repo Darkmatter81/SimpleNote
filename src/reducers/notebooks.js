@@ -1,7 +1,8 @@
 import { 
     RECEIVE_NOTEBOOKS, 
     ADD_NOTEBOOK,
-    REMOVE_NOTEBOOK } from '../actions/notebooks';
+    REMOVE_NOTEBOOK, 
+    UPDATE_NOTEBOOK_NAME} from '../actions/notebooks';
 import { REMOVE_NOTE, ADD_NOTE } from '../actions/notes';
 
 export default function (state=null, action){
@@ -50,6 +51,15 @@ export default function (state=null, action){
                 }              
             }
         }
+        case UPDATE_NOTEBOOK_NAME:
+            const notebook = state[action.id]
+            return {
+                ...state,
+                [notebook.id]:{
+                    ...notebook,
+                    name:action.name,
+                }
+            };
         default:
             return state;
     }
